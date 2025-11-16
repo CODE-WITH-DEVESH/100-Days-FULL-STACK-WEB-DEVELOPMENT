@@ -1,0 +1,99 @@
+interview questions
+🎯 Interview Focus – Common Questions & Best Answers
+Q1. What is HTML and why do we use it?
+
+Simple: HTML ek markup language hai jo web pages create karne ke liye use hoti hai.
+
+Professional:
+HTML (HyperText Markup Language) is the standard language for creating web pages. It structures the content, defines layout, and works with CSS and JavaScript to build interactive web applications.
+
+Q2. What is the basic structure of an HTML document?
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+  </body>
+</html>
+
+Explanation:
+
+<!DOCTYPE html>: HTML5 document type
+
+<html>: Root tag
+
+<head>: Metadata and linking assets
+
+<body>: Visible content
+
+Q3. What are semantic tags? Why are they important?
+
+Answer:
+Semantic tags convey meaning to the browser and other developers. They improve readability and SEO.
+Examples:
+
+<header> → Header content
+
+<nav> → Navigation
+
+<main> → Main content
+
+<article> → Independent content
+
+<footer> → Footer
+
+Q4. What are self-closing or void tags in HTML? Give examples.
+
+Answer:
+Void tags do not need a closing tag and cannot contain content.
+Examples: <br>, <hr>, <img>, <input>, <meta>
+
+Q5. How can you embed audio and video in HTML?
+
+Answer:
+Using <audio> and <video> tags.
+
+Example:
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<video width="400" controls>
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+
+🎤 Q6. What's the difference between <div> and <section>?
+
+<div> is a non-semantic container used for grouping content for styling/layout.
+
+<section> is a semantic tag used for meaningful grouping of related content.
+
+🎯 Practical Task for Today:
+
+Create a 3-page basic website:
+
+Homepage (index.html)
+
+**About.html`
+
+**Contact.html`
+
+Use:
+
+Header & Footer
+
+Semantic elements
+
+Audio or Video on any page
+
+💡 Bonus Tips:
+
+Always write clean and indented HTML.
+
+Focus on accessibility and proper structure — interviewers love this.
+
+Practice writing code without auto-complete to strengthen fundamentals.

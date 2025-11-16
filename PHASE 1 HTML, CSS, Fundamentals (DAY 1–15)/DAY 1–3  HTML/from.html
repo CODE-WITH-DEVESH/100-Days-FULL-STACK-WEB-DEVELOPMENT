@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From In HTML</title>
+
+    <style>
+        /* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff5f5;
+    padding: 20px;
+    color: #333;
+}
+
+/* Form Container */
+form {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #e23744;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(226, 55, 68, 0.3);
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    color: #e23744;
+    margin-bottom: 20px;
+}
+
+/* Form Elements */
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #e23744;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e23744;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #b51f2e;
+    box-shadow: 0 0 5px rgba(226, 55, 68, 0.4);
+}
+
+/* Radio Button Group */
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+p {
+    margin-bottom: 5px;
+    color: #e23744;
+    font-weight: bold;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #e23744;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #b51f2e;
+}
+
+    </style>
+</head>
+<body>
+    
+
+    <form action="/submit.php"></form>
+
+    <div>
+        <label for="name"><b>Name</b></label>
+        <input  id="name" type="text" placeholder="Enter the Name"> 
+        <div>
+
+            <label for="phone"> <b>Phone</b></label>
+            <input id="phone" type="Phone" placeholder="Enter Your Number">
+        </div>
+        <div>
+            <label for="bob">Date of Birth</label>
+            <input   type="date" required id="bob">
+
+        </div>
+
+        <div>
+            <label for="gender">Gender</label>
+            <select  id="gender" required>
+
+                <option value="" disabled selected >Select Gender
+            
+                </option>
+                <option value="male">Male</option>
+                <option value="male">Female</option>
+            </select>
+        </div>
+
+        <div>
+            <p>Subscription Plan</p>
+            <input type="radio" name="Subscription" id="basic">
+            <label for="basic">basic</label>
+
+            <input type="radio" name="Subscription" id="premium">
+            <label for="premium">premium</label>
+
+            <input type="radio" name="Subscription" id="vip">
+            <label for="vip">vip</label>
+
+        </div>
+
+
+        <div>
+            <!-- CheckBox -->
+
+            <label for="comments"></label> <br>
+            <textarea name="" id="comments" placeholder="Enter the text"></textarea>
+            <div>
+                <button type="submit"> Submit</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
