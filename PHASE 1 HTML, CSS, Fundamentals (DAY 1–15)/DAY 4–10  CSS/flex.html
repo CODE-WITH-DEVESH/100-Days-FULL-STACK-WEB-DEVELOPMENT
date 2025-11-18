@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex box</title>
+    <style>
+      /* .flex-box {
+        width: 1320px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+      }
+      .flex-Items1 {
+        background-color: rgb(255, 16, 16);
+        width: 500px;
+        margin: auto;
+      } */
+      .flex-example-new {
+        width: 1320px;
+        margin: auto;
+        display: flex;
+        margin-bottom: 50px;
+        height: 500px;
+        align-items: flex-end;
+        justify-content: space-around;
+        flex-direction: column;
+        flex-wrap: wrap;
+        
+      }
+      .item {
+        width: 500px;
+        box-shadow: 0px 0px 10px 2px #ccc;
+        text-align: center;
+        padding: 30px 0px;
+
+        align-items: center;
+      }
+      .item img {
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-box">
+      <div class="flex-Items1" style="background-color: aqua">Items1</div>
+      <div class="flex-Items1" style="background-color: rgb(47, 103, 167)">
+        Items2
+      </div>
+      <div class="flex-Items1" style="background-color: rgb(32, 165, 88)">
+        Items3
+      </div>
+      <div class="flex-Items1" style="background-color: rgb(94, 147, 147)">
+        Items4
+      </div>
+      <div class="flex-Items1" style="background-color: rgb(141, 43, 169)">
+        Items5
+      </div>
+    </div>
+
+    <div class="flex-example-new">
+      <div class="item">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/7915/7915382.png"
+          alt=""
+        />
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+      <div class="item">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/7915/7915382.png"
+          alt=""
+        />
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+      <div class="item">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/7915/7915382.png"
+          alt=""
+        />
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+      <div class="item">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/7915/7915382.png"
+          alt=""
+        />
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+    </div>
+  </body>
+</html>
