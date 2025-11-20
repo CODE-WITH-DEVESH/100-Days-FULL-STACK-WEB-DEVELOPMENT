@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .container {
+        max-width: 1320px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        grid-template-areas: "header header ""sidebar sidebar" "footer footer"" content content";
+      }
+      .header{
+        background-color: firebrick;
+        padding: 10px;
+        grid-area: header;
+      }
+      .sidebar{
+        background-color: blue;
+        padding: 20px;
+        grid-area: sidebar;
+
+      }
+      .content{
+        grid-area: content;
+        background-color: antiquewhite;
+        padding: 20px;
+    }
+    .footer{
+          grid-area: footer;
+        background-color: rgb(4, 105, 213);
+        padding: 20px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="header">header</div>
+        <div class="sidebar">sidebar</div>
+        <div class="content">content</div>
+        <div class="footer">footer</div>
+    </div>
+  </body>
+</html>

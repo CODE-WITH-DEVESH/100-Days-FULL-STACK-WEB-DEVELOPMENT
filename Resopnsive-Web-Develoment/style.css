@@ -1,0 +1,92 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/* h2{
+    font-size: 220px;
+
+} */
+
+
+/* px -fixed
+% - depending on parent */
+
+/* .parent{
+    width: 700px;
+    height: 400px;
+    background-color: lightblue;
+}
+.child{
+    height: 50%;
+    width: 50%;
+    background-color: brown;
+} */
+
+
+/* vw viewport width   (Depending on Screen width)*/
+/* vw viewport height   (Depending on Screen height)*/
+
+/* .parent{
+    height: 20vw;
+    width: 20vw;
+    background-color: aquamarine;
+} */
+
+
+
+
+/* h1{
+    font-size: 10vmax;
+
+} */
+/* .parent{
+    height: 20vh;
+    width: 20vw;
+    background-color: aquamarine;
+} */
+
+/* 
+.parent{
+    height: 20vmax;
+    width: 20vmax;
+    background-color: aquamarine;
+} 
+vh
+vw
+vmax
+vmin
+ */
+
+/* .parent{
+    height: 500px;
+    width: 500px;
+    background-color: yellow;
+    font-size: 20px;
+}
+h1{
+    font-size: 1rem;
+}
+h2{
+    font-size: 2rem;
+} */
+
+/* em parent ko value do or childs ko em ma value de do parent ki value 
+change kargege toh child ki bhi change ho jagegei
+
+rem 16px (according to parent ) */
+/* 
+h1{
+    width: 20ch;
+}
+h2{
+    margin-top: 2lh;
+} */
+
+.p2{
+    color: aquamarine ;
+    margin-top: 8lh;
+}
