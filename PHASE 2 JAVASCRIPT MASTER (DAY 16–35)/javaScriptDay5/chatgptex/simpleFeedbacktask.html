@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRACTICE QUESTIONS</title>
+</head>
+<body>
+    <input type="text" name="" id="usertext">
+    <button id="btn">click</button>
+    <p id="paragraph"></p>
+</body>
+<script>
+    let usertextInput =document.getElementById('usertext')
+    let buttonInput =document.getElementById('btn')
+    let paragraphInput =document.getElementById('paragraph')
+
+        // Qus 1
+    buttonInput.addEventListener('click',()=>{
+        paragraphInput.innerText=usertextInput.value;
+        usertextInput.value=""
+    })
+    
+     // Qus 2
+    buttonInput.addEventListener('click',()=>{
+            if(usertextInput.value===""){
+                    paragraphInput.innerHTML="please enter the text"
+                } else{
+                        paragraphInput.innerText=usertextInput.value
+                    }
+                })
+                
+                // Qus 3
+                buttonInput.addEventListener('click',()=>{
+                    paragraphInput.innerHTML=usertextInput.value.toUpperCase()
+                    
+                })
+
+                // Qus 4
+
+                buttonInput.addEventListener('click',()=>{
+                    paragraphInput.innerText=usertextInput.value;
+                    usertextInput.value=""
+                })
+
+                // Qus 5
+
+                buttonInput.addEventListener('click',()=>{
+                    if(usertextInput.value ===""){
+                        paragraphInput.innerText ="Enter username"
+                    } else{
+                        paragraphInput.innerText= "Welcome" + usertextInput.value
+                    }
+                })
+
+</script>
+</html>

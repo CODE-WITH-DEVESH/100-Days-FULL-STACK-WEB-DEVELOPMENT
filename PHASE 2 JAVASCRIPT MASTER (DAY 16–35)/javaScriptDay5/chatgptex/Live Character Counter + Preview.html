@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Character Counter + Preview</title>
+</head>
+<body>
+    <input type="text" name="" id="messageInput" placeholder="Enter the message..">
+    <p id="textPreview"> Your text will appear here..</p>
+    <p id="charCount">Charaters typed: 0</p>
+          
+<!-- Q1 – Live Uppercase Preview -->
+
+    <input type="text" name="" id="nameinput" placeholder="Enter name">
+    <p id="namePreview"></p>
+
+    <!-- ❓ Q2 – Live Greeting -->
+
+    <input type="text" name="" id="username">
+    <p id="greeText"></p>
+
+    <!-- ❓ Q3 – Password Length Checker -->
+
+    <input type="password" name="" id="passInput" placeholder="Enter password">
+    <p id="passStatus"></p>
+    <!-- ❓ Q4 – Character Counter Only -->
+     <input type="text" name="" id="bioInput" placeholder="Enter the text">
+     <p id="bioCount"></p>
+     
+    
+</body>
+<script>
+    let messageInputText =document.getElementById('messageInput') 
+    let textPreviewtext =document.getElementById('textPreview')
+    let charCountText =document.getElementById('charCount')
+
+    let nameInput =document.getElementById('nameinput')
+    let namePreview=document.getElementById('namePreview')
+
+    let username =document.getElementById('username')
+    let greeText=document.getElementById('greeText')
+
+    let passInput =document.getElementById('passInput')
+    let passStatus =document.getElementById('passStatus')
+    let bioInput =document.getElementById('bioInput')
+    let bioCount =document.getElementById('bioCount')
+
+    nameInput.addEventListener('input',()=>{
+        namePreview.innerHTML=nameInput.value.toUpperCase()
+
+    })
+
+
+// ❓ Q2 – Live Greeting
+
+username.addEventListener('input',()=>{
+   if(greeText.value===""){
+       greeText.innerText="Please type your name"
+    } else{
+        greeText.innerText= "Hello "+username.value
+   }
+})
+
+    // messageInputText.addEventListener('input',()=>{
+    //     textPreviewtext.innerText =messageInputText.value
+    //     charCountText.innerText="Characters typed:" +messageInputText.value.length
+    // })
+
+
+    messageInputText.addEventListener('input',()=>{
+        if(messageInputText.value ===""){
+            textPreviewtext.innerText ="your text here.."
+            charCountText.innerText="chaeaters typed: "
+
+        } else{
+            textPreviewtext.innerText=messageInputText.value
+            charCountText.innerText="chaeaters typed "+messageInputText.value.length
+        }
+    })
+
+   
+    // ❓ Q3 – Password Length Checker
+    passInput.addEventListener('input',()=>{
+        if(passInput.value.length < 6){
+            passStatus.innerText="Weak Password"
+        } else {
+            passStatus.innerText="Strong Password"
+        }
+    })
+
+    // ❓ Q4 – Character Counter Only
+
+    bioInput.addEventListener('input',()=>{
+        bioCount.innerText=bioInput.value.length
+    })
+
+
+    
+</script>
+</html>

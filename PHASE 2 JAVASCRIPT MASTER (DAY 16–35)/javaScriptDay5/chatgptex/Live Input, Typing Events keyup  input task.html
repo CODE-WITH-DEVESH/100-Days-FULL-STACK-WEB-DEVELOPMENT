@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Character Counter + Preview</title>
+</head>
+<body>
+    
+    <input type="text" name="" id="messages" placeholder="type your messages">
+    <p id="textPreview">Your text will appear here </p>
+    <p id="charCount">Character typed : 0</p>
+
+</body>
+<script>
+    let messagesInput = document.getElementById('messages')
+    let textPreviewInput =document.getElementById('textPreview')
+    let charCountInput =document.getElementById('charCount')
+
+    messagesInput.addEventListener('input',()=>{
+        textPreviewInput.innerText =messagesInput.value;
+        charCountInput.innerText="Char typed :"+ messagesInput.value.length
+
+    })
+</script>
+</html>

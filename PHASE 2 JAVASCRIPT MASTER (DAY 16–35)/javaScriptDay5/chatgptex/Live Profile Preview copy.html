@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Profile Preview</title>
+
+    <style>
+        /* Google Font (optional but beautiful) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    gap: 20px;
+}
+
+/* Input Fields */
+input {
+    width: 280px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: #888;
+}
+
+input:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Button */
+button {
+    width: 200px;
+    padding: 14px;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #ff512f, #f09819);
+    cursor: pointer;
+    letter-spacing: 1px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Preview Text */
+#preview {
+    margin-top: 10px;
+    padding: 18px 24px;
+    min-width: 320px;
+    text-align: center;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+     <input type="text" name="" id="nameInput" placeholder="Your name">
+     <input type="text" name="" id="cityInput" placeholder="Your City">
+     <button id="save">Save</button>
+     <button id="clear">CLEAR</button>
+     <h3 id="preview"></h3>
+
+</body>
+<script>
+    let nameInputElement =document.getElementById('nameInput')
+    let cityInputElement =document.getElementById('cityInput')
+    let previewInputElement =document.getElementById('preview')
+    let savebtn =document.getElementById('save')
+    let clearbtn=document.getElementById('clear')
+
+    savebtn.addEventListener('click',()=>{
+        previewInputElement.innerText =nameInputElement.value+ "from " +cityInputElement.value;
+        
+
+    })
+
+    clear.addEventListener('click',()=>{
+        previewInputElement.innerText=nameInputElement.value +"form " +cityInputElement.value;
+        nameInputElement.value=""
+        cityInputElement.value=""
+    })
+
+
+
+</script>
+</html>

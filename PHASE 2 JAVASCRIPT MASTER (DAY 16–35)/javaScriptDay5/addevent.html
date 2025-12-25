@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add event </title>
+</head>
+<body>
+    <button>save</button>
+    <h1>Welcome to Dev Page </h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga maxime explicabo maiores, ab provident assumenda consequuntur dolore mollitia a earum quae facere nemo soluta, molestias praesentium voluptatibus autem sit ut.</p>
+</body>
+<script>
+    let btn = document.querySelector('button')
+    let hading =document.querySelector('h1')
+    let para = document.querySelector('p')
+
+
+    btn.addEventListener('click',()=>{
+        // console.log("Add");
+        hadingElement = hading.innerHTML
+        paraElemet =para.innerHTML
+
+        hading.innerHTML=paraElemet
+        para.innerHTML=hadingElement
+        
+    })
+</script>
+</html>

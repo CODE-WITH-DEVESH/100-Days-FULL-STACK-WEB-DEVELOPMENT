@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Add in Class</title>
+    <style>
+        .active {
+            background-color: red;
+            font-size: 20px;
+            color: blue;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btnadd">Add Class</button>
+    <button id="btnremove">Remove Class</button>
+    <button id="btntoggle"> Class Toggle</button>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi optio non expedita. Reprehenderit distinctio,
+        sint, aliquam voluptatibus tempore velit cum odit porro dicta in optio laudantium ullam minus excepturi
+        laboriosam.</p>
+
+
+</body>
+
+
+<script>
+
+
+    let btnaddElement = document.querySelector('#btnadd')
+    let btnremoveElement = document.querySelector('#btnremove')
+    let btntoggleElement = document.querySelector('#btntoggle')
+    let para = document.querySelector('p')
+
+
+    btnaddElement.addEventListener('click', () => {
+        para.classList.add('active')
+
+    })
+
+    btnremoveElement.addEventListener('click', () => {
+        para.classList.remove('active')
+    })
+    btntoggleElement.addEventListener('click', () => {
+        para.classList.toggle('active')
+    })
+
+</script>
+
+</html>

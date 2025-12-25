@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task </title>
+
+    <!-- // write css with chat GPT -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        /* Inputs */
+        input {
+            width: 320px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: #777;
+        }
+
+        input:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 3px rgba(0, 174, 255, 0.6);
+        }
+
+        /* Buttons */
+        button {
+            width: 200px;
+            padding: 14px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #fff;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.4);
+            transition: all 0.35s ease;
+        }
+
+        /* Different button styles */
+        #btnemail {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+        }
+
+        #login {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+
+        /* Hover effects */
+        button:hover {
+            transform: translateY(-4px) scale(1.06);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Output text */
+        #para {
+            min-width: 340px;
+            padding: 16px 22px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+            animation: slideFade 0.6s ease-in-out;
+        }
+
+        /* Animation */
+        @keyframes slideFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" id="name" placeholder="Enter the name">
+    <input type="email" name="" id="email" placeholder="Enter your Email">
+    <button id="btn">Button Click!</button>
+    <button id="btnemail">Button Email</button>
+    <p id="para"> </p>
+
+    <input type="password" name="" id="password" placeholder="Enter Password">
+    <button id="login">Login</button>
+
+
+
+</body>
+<script>
+    let nameinput = document.getElementById('name')
+    let parainput = document.getElementById('para')
+    let buttonbtn = document.getElementById('btn')
+    let buttonbtnemail = document.getElementById('btnemail')
+    let emailInput = document.getElementById('email')
+
+    let passwordInput = document.getElementById('password')
+    let loginBtn = document.getElementById('login')
+
+
+    buttonbtn.addEventListener('click', () => {
+        parainput.innerText = "Hello" + nameinput.value
+        // alert()
+
+    })
+    buttonbtnemail.addEventListener('click', () => {
+        parainput.innerText = "Your email is: _ " + emailInput.value;
+    })
+
+    buttonbtn.addEventListener('click', () => {
+        parainput.innerText = nameinput.value.toUpperCase()
+    })
+
+    loginBtn.addEventListener('click', () => {
+        if (passwordInput.value === "") {
+            parainput.innerText = "Enter the Password"
+        } else {
+            parainput.innerText = "login Done"
+        }
+    })
+
+    buttonbtn.addEventListener('click', () => {
+        parainput.innerText = "hello" + nameinput.value;
+        nameinput.value = ""
+    })
+
+</script>
+
+</html>
