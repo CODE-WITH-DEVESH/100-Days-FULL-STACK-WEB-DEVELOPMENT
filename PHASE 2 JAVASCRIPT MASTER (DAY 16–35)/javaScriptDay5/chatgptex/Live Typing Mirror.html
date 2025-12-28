@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Typing Mirror</title>
+</head>
+<body>
+
+
+    <input type="text" id="mirrorInput" placeholder="Type Something">
+    <p id="mirrorOutput"></p>
+
+    <input type="text" name="" id="lengthInput">
+    <p id="liveLength">0</p>
+
+</body>
+<script>
+    let mirrorInput =document.getElementById('mirrorInput')
+    let mirrorOutput=document.getElementById('mirrorOutput')
+
+    let lengthInput =document.getElementById('lengthInput')
+    let liveLength =document.getElementById('liveLength')
+
+    mirrorInput.addEventListener('input',()=>{
+
+        if(mirrorInput.value ===""){
+            mirrorOutput.innerText= "Nothing typed yet"
+        } else{
+            mirrorOutput.innerText=mirrorInput.value.toUpperCase()
+        
+        }
+    })
+
+   lengthInput.addEventListener('input',()=>{
+    liveLength.innerText=lengthInput.value.length()
+   })
+</script>
+</html>
