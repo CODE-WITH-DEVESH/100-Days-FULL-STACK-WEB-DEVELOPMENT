@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle (Industry Level)</title>
+    <style>
+        .dark{
+            background-color: yellow;
+            color: white;
+            padding: 20px;
+        }
+        .online{
+            color: green;
+            padding: 2px;
+            border-color: aqua;
+            font-family: sans-serif;
+            border-radius: 2px solid red;
+        }
+        .color{
+            color: red;
+            font-family: sans-serif;
+        }
+        .btnlogin{
+            border: 2px solid red;
+            color: aqua;
+            
+        }
+        .activecolor{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+       <button id="modebtn">Toggle Mode</button>
+       <div id="box">
+        <h2>Hello Devesh</h2>
+        <p id="love">This is Normal mode</p>
+       </div>
+
+    
+        <!-- Active / Inactive Status -->
+         <button id="statusBtn">Change Status</button>
+         <p id="statustext">Ofline</p>
+
+         <button id="colorChange">Color Change</button>
+         <p id="textcolor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, pariatur consequatur praesentium quis optio, beatae impedit molestiae facilis commodi, excepturi amet mollitia inventore!</p>
+
+         <button id="login">login</button>
+
+         <button id="statusBtnactive">Click Hare..</button>
+         <p id="textactive">Active</p>
+</body>
+<script>
+    let btn =document.getElementById('modebtn')
+    let box=document.getElementById('box')
+    let love =document.getElementById('love')
+    let statusBtn=document.getElementById('statusBtn')
+    let statustext=document.getElementById('statustext')
+
+    let colorChange=document.getElementById('colorChange')
+    let textcolor=document.getElementById('textcolor')
+
+    let login=document.getElementById('login')
+
+    let statusBtnactive=document.getElementById('statusBtnactive')
+    let textactive=document.getElementById('textactive')
+
+    login.addEventListener('click',()=>{
+        login.classList.toggle("btnlogin")
+        
+    })
+
+
+    colorChange.addEventListener('click',()=>{
+        textcolor.classList.toggle("color")
+
+    })
+
+    btn.addEventListener('click',()=>{
+        box.classList.toggle("dark")
+      
+    })
+
+
+        statusBtn.addEventListener('click',()=>{
+            // statustext.innerHTML="Online"
+            statustext.classList.toggle("online")
+            if(statustext.classList.contains("online")){
+                statustext.innerText="Online"
+            } else{
+                statustext.innerText="Offline"
+            }
+        })
+
+        statusBtnactive.addEventListener('click',()=>{
+            textactive.classList.toggle('activecolor')
+            if(textactive.classList.contains("activecolor")){
+                textactive.innerText="Active"
+            } else{
+                textactive.innerText="InActive"
+            }
+        })
+</script>
+</html>

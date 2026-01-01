@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Button & Select Dropdown Profile Setup Form</title>
+</head>
+
+<body>
+    <form id="profileform">
+        <input type="text" name="" id="nameinput" placeholder="Enter the Name"> <br>
+        Gender: <br>
+        <input type="radio" name="Gender" value="Male"> Male <br>
+        <input type="radio" name="Gender" value="Female"> Female 
+        <br>
+        <select name="" id="cityselect">
+            <option value="">Select City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bareilly">Bareilly</option>
+            
+        </select> <br>
+        <button>Submit</button>
+    </form>
+    <p id="result"></p>
+</body>
+<script>
+    let form = document.getElementById('profileform')
+    let nameinput = document.getElementById('nameinput')
+    let cityselect = document.getElementById('cityselect')
+    let result = document.getElementById('result')
+
+
+    let genderRadios = document.querySelectorAll('input[name="Gender"]')
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let gender = ""
+        genderRadios.forEach(u => {
+            if (u.checked) {
+                gender = u.value;
+            }
+        })
+
+
+        if (
+            nameinput.value === "" ||
+            gender === "" ||
+            cityselect.value === ""
+        ) {
+            result.innerText = "Please fill all details"
+        } else {
+            result.innerText = `${nameinput.value }| ${ gender } | ${ cityselect.value }`
+        }
+    })
+
+</script>
+
+</html>

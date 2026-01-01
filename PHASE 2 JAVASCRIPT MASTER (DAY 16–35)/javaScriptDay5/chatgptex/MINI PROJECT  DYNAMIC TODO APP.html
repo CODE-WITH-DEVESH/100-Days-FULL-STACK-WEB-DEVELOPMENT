@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINI PROJECT – DYNAMIC TODO APP (CORE)</title>
+    <!-- <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1d2671, #c33764);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    color: #fff;
+}
+
+/* Input */
+#taskInput{
+    width: 320px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    transition: all 0.3s ease;
+}
+
+#taskInput::placeholder{
+    color: #777;
+}
+
+#taskInput:focus{
+    transform: scale(1.05);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.6);
+}
+
+/* Add Button */
+#addbtn{
+    width: 180px;
+    padding: 14px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    background: linear-gradient(135deg, #00f260, #0575e6);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    transition: all 0.35s ease;
+}
+
+#addbtn:hover{
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 25px 55px rgba(0,0,0,0.6);
+}
+
+#addbtn:active{
+    transform: scale(0.95);
+}
+
+/* Task List */
+#tasklist{
+    list-style: none;
+    width: 360px;
+    margin-top: 10px;
+    padding: 0;
+}
+
+/* Task Item */
+#tasklist li{
+    margin-bottom: 10px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    font-size: 15px;
+    font-weight: 500;
+    animation: fadeUp 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+/* Hover effect on task */
+#tasklist li:hover{
+    transform: translateX(6px);
+    background: rgba(255,255,255,0.28);
+}
+
+/* Animation */
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style> -->
+</head>
+<body>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button id="addbtn">Add Tasks</button>
+
+    <ul id="tasklist"></ul>
+
+
+    
+    <button id="h2id">Create h2</button>
+
+    <h2 id="head">Welcome</h2>
+
+</body>
+<script>
+    let createElementh2=document.getElementById('h2id')
+    let head=document.getElementById('head')
+
+    createElementh2.addEventListener('click',()=>{
+        let h2elementnow =document.createElement('h2')
+        h2elementnow.innerText =head.value
+    })
+    let taskInput=document.getElementById('taskInput')
+    let addtaskbtn=document.getElementById('addbtn')
+    let tasklist=document.getElementById('tasklist')
+
+    addtaskbtn.addEventListener('click',()=>{
+        if(taskInput.value===""){
+            alert ("Please enter a task")
+            return;
+        }
+
+
+
+        
+        let li =document.createElement('li')
+        li.innerText =taskInput.value
+
+        let delBtn =document.createElement('button')
+        delBtn.innerText="X"
+        // let h2element =document.createElement('h2')
+        // h2element.appendChild(h2)
+
+        delBtn.addEventListener('click',()=>{
+            li.remove()
+        })
+        li.appendChild(delBtn);
+
+        tasklist.appendChild(li)
+        taskInput.value=""
+    })
+</script>
+</html>

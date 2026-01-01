@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager + Live Status App</title>
+    <style>
+        .done{
+            text-decoration: line-through;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Task Menager</h2>
+    <input type="text" name="" id="taskinput" placeholder="Enter Task"> <br>
+    <button id="addbtn"> Add Task</button> <br>
+
+    <p>Total Tasks: <span id="total"> 0</span> </p> <br>
+    <hr>
+
+    <ul id="tasklist"></ul>
+    <p id="statusText">Status: Pending</p>
+    <button id="allbtn">All</button>
+    <button id="completebutton">Completed </button>
+    <button id="pendingBtn">Pending </button>
+
+    <button id="clearAll">Clear All</button>
+
+    
+</body>
+<script>
+    let taskinput =document.getElementById('taskinput')
+    let addbtn=document.getElementById('addbtn')
+    let toatltasks =document.getElementById('total')
+    let tasklist=document.getElementById('tasklist')
+    let statusText=document.getElementById('statusText')
+
+    let allbtn=document.getElementById('allbtn')
+    let completebutton=document.getElementById('completebutton')
+    let paddingbtn =document.getElementById('pendingBtn')
+
+
+
+    let clearAll=document.getElementById('clearAll')
+
+
+    let totalTasks =0;
+
+    addbtn.addEventListener('click',()=>{
+        if(taskinput.value ===""){
+            alert("Please Enter the task")
+            return;
+
+        }
+
+        let li =document.createElement('li')
+        li.innerText=taskinput.value
+
+        let completeBtn =document.createElement('button')
+        completeBtn.innerText="Complete Task"
+
+        let deleteBtn =document.createElement('button')
+        deleteBtn.innerText="Delete"
+        li.appendChild(completeBtn)
+        li.appendChild(deleteBtn)
+
+        tasklist.appendChild(li)
+
+        toatltasks++;
+        toatltasks.innerText=toatltasks
+
+        taskinput.value =""
+
+        completeBtn.addEventListener('click',()=>{
+            li.classList.toggle("done")
+            if(li.classList.contains("done")){
+                statusText.innerText="Status : Completed"
+            } else{
+                statusText.innerText="Status : Pending"
+            }
+        })
+
+        deleteBtn.addEventListener('click',()=>{
+            li.remove()
+            toatltasks--;
+            toatltasks.innerText=toatltasks;
+        })
+
+    })
+
+    allbtn.addEventListener('click',()=>{
+        let tasks =document.createElement('li')
+
+        tasks.forEach(task=>{
+            task.style.display ="list-item"
+        })
+    })
+    completebutton.addEventListener('click',()=>{
+        let tasks=document.querySelectorAll('li')
+        tasks.forEach(task=>{
+            if(task.classList.contains('done')){
+                task.style.display="list-item"
+            } else{
+                task.style.display="none"
+            }
+        })
+    })
+    paddingbtn.addEventListener('click',()=>{
+        let tasks=document.querySelectorAll('li')
+
+        tasks.forEach(task=>{
+            if(!task.classList.contains('done')){
+                task.style.display='list-item'
+            } else{
+                task.style.display='none'
+            }
+        })
+    })
+    clearAll.addEventListener('click',()=>{
+        tasklist.innerHTML=""
+        toatltasks=0
+        totalTasks.innerText=toatltasks
+        statusText.innerText="Status :pending"
+    })
+</script>
+</html>

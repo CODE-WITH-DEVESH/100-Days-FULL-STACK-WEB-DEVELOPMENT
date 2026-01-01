@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission Preview System</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .web {
+            background-color: lightgreen;
+        }
+
+        .data {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Student Admission</h2>
+    <input type="text" name="" id="stuname" placeholder="Enter the Name">
+    <br><br>
+    <hr>
+    <select id="stucourse">
+        <option value="">Select Course</option>
+        <option value="Web">Web Develoment</option>
+        <option value="Data">Data Science</option>
+    </select>
+    <br><br>
+
+    <button id="addstu">Add Student</button>
+    <hr>
+    <div id="studentList"></div>
+    <p>Total Students: <span id="count">0</span></p>
+
+</body>
+
+<script>
+    let count = 0;
+    let countText = document.getElementById("count");
+
+    let stuname = document.getElementById('stuname')
+    let stucourse = document.getElementById('stucourse')
+    let addstubtn = document.getElementById('addstu')
+    let studentList = document.getElementById('studentList')
+
+    addstubtn.addEventListener('click', () => {
+        if (stuname.value === "" || stucourse.value === "") {
+            alert("Please fill all details")
+
+            return;
+        }
+
+        let card = document.createElement('div')
+        card.classList.add('card')
+
+        let h3 = document.createElement('h3')
+        h3.innerText = "Name " + stuname.value
+
+        let p = document.createElement('p')
+        p.innerText = "Course " + stucourse.value
+
+        let delBtn = document.createElement('button')
+        delBtn.innerText = "Delete"
+
+        delBtn.addEventListener('click', () => {
+            card.remove();
+            count--;
+            countText.innerText = count
+
+
+
+        })
+        if (stucourse.value === "web") {
+            car.studentList.add('web')
+        } else {
+            card.classList.add('data')
+        }
+        card.appendChild(h3)
+        card.appendChild(p)
+        card.appendChild(delBtn)
+
+        studentList.appendChild(card)
+        count++
+        countText.innerText = count
+
+        stuname.value = "";
+        stucourse.value = "";
+
+    })
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINI REAL PROJECT</title>
+</head>
+
+<body>
+
+
+
+    <form action="" id="myform">
+        <input type="text" name="" id="username" placeholder="Enter Name"> <br>
+        <input type="password" id="password" placeholder="Enter password"> <br>
+        <button id="">Submit</button>
+
+    </form>
+    <p id="msg"></p>
+
+
+</body>
+<script>
+
+    let form = document.getElementById('myform')
+    let userinput = document.getElementById('username')
+    let userpass = document.getElementById('password')
+    let msg = document.getElementById('msg')
+
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        console.log("Sumitted Successfully")
+    })
+
+
+</script>
+
+</html>

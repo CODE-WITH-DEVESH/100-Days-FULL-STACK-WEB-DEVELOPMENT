@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task </title>
+</head>
+
+<body>
+    <!-- Qus 1 -->
+    <form id="myfrom">
+        <input type="text" name="" id="username" placeholder="Enter Name."> <br>
+        <input type="radio" name="payment" value="cash"> Cash <br>
+        <input type="radio" name="payment" value="online"> online <br>
+        <button>submit</button>
+
+
+
+    </form> <br>
+    <!-- Qus 2 -->
+
+    <form id="courseweb">
+        <select name="" id="coursedata">
+            <option value="">Select Course</option>
+            <option value="web">web</option>
+            <option value="data">data</option>
+        </select> <br>
+        <button>Chack Data</button> <br>
+    </form>
+    <p id="starts"></p>
+
+
+    <form id="genderdatafrom">
+
+        <input type="radio" name="gender" value="male"> male
+        <input type="radio" name="gender" value="female"> female
+        <button>submit</button>
+    </form>
+
+</body>
+<script>
+
+    let genderdatafrom = document.getElementById('genderdatafrom')
+    let genderdata = document.querySelectorAll('input[name="gender"]')
+        genderdatafrom.addEventListener('submit',(e)=>{
+            e.preventDefault()
+            
+        })
+     
+
+        let gender = ""
+        gender
+
+    let myfrom = document.getElementById('myfrom')
+    let userinput = document.getElementById('username')
+
+    let paymentmode = document.querySelectorAll('input[name="payment"]')
+
+    let courseweb = document.getElementById('courseweb')
+    let coursedata = document.getElementById('coursedata')
+    let starts = document.getElementById('starts')
+
+
+
+
+    myfrom.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let paymentsel = ""
+        paymentmode.forEach(r => {
+            if (r.checked) {
+                paymentsel = r.value
+            }
+            console.log(paymentsel)
+        })
+
+    })
+
+
+    courseweb.addEventListener('submit', (e) => {
+        e.preventDefault()
+        if (coursedata.value === "") {
+            starts.innerHTML = "Error"
+
+        } else {
+            starts.innerText = "Done"
+        }
+    })
+
+
+</script>
+
+</html>

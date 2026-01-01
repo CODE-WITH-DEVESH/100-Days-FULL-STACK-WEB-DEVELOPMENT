@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINI REAL PROJECT</title>
+</head>
+<body>
+
+    <form id="loginform">
+        <input type="text" name="" id="username" placeholder="Enter the name">
+        <input type="password" name="" id="password" placeholder="Enter password">
+        <button id="">Login</button>
+    </form>
+    
+    <p id="msg"></p>
+</body>
+<script>
+    let form =document.getElementById('loginform')
+    let userinput =document.getElementById('username')
+    let userpass =document.getElementById('password')
+   let msg = document.getElementById('msg')
+
+
+   form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+
+    if(userinput.value ==="" ||userpass.value===""){
+        msg.innerText="Please fill all fields"
+    } else{
+        msg.innerHTML="Login succesful"
+    }
+
+   })
+
+
+</script>
+</html>

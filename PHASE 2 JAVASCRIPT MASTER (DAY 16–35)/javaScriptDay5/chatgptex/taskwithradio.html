@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Radios Task</title>
+</head>
+<body>
+    <form id="ProfileForm">
+   <h3>Profile form</h3>
+
+   Gender:
+   <input type="radio" name="gender" value="male"> male
+   <input type="radio" name="gender" value="female"> Female
+
+       <select name="" id="cityselect">
+        <option value="">Select City</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Bareilly">Bareilly</option>
+       </select>
+          
+       <button>Submit</button>
+
+    </form>
+    <p id="output"></p>
+</body>
+<script>
+    let form = document.getElementById('ProfileForm')
+    let genderRadios=document.querySelectorAll('input[name="gender"]')
+    // let genderRadios = document.querySelectorAll('input[name="gender"]');
+    let cityselect =document.getElementById('cityselect')
+    let output =document.getElementById('output')
+
+
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault()
+
+
+        let selectGender =""
+        genderRadios.forEach(r=>{
+            if(r.checked){
+                selectGender =r.value
+
+            }
+        })
+        let selectCity =cityselect.value
+        let userprofile ={
+            gender:selectGender,
+            city: selectCity
+        }
+        console.log(userprofile);
+        output.innerText =`Gender: ${userprofile.gender},city:${userprofile.city}`
+        
+    })
+</script>
+</html>

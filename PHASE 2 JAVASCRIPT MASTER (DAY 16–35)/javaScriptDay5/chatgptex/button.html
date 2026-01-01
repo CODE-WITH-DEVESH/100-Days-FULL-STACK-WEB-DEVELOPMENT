@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <!--  <button id="makebtn"> Create Button</button> <br> -->
+
+
+   <button id="buildBtn">Build Contect</button>
+
+   <div id="box"></div>
+
+
+
+
+</body>
+<script>
+    // let makebtn =document.getElementById('makebtn')
+
+    
+
+    // makebtn.addEventListener('click',()=>{
+    //     let newbutton =document.createElement('button')
+    //     newbutton.innerText="Click Me " 
+    //     document.body.appendChild(newbutton)
+
+    //     let para =document.createElement('p')
+    //     para.innerText=" This is Paragraph"
+    //     document.body.appendChild(para)
+
+    //     let heading =document.createElement('h2')
+    //     heading.innerText="Welcome to Devesh"
+    //     document.body.appendChild(heading)
+    // })
+     
+     let  buildBtn =document.getElementById('buildBtn')
+     let box =document.getElementById('box')
+
+
+     buildBtn.addEventListener('click',()=>{
+        let h2 =document.createElement('h2')
+        h2.innerText="Welcome User"
+        box.appendChild(h2)
+        let para =document.createElement('p')
+        para.innerText="This conetc is crated using javascript"
+        box.appendChild(para)
+        let btn =document.createElement('button')
+        btn.innerText="Click me "
+        box.appendChild(btn)
+        
+
+
+     })
+</script>
+</html>
