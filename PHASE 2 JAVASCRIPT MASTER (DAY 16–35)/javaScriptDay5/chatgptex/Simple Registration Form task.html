@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRACTICE QUESTIONS (PROJECT STYLE – 5)</title>
+</head>
+<body>
+    <input type="text" name="" id="loginuser" placeholder="Enter Your Name"> <br>
+    <input type="password" name="" id="loginpass" placeholder="Enter Your Password"> <br>
+
+    <button id="loginBtn">Submit</button>
+    <p id="loginMsg"></p>
+    <!-- // Qus 2 -->
+
+    <input type="text" name="" id="fullname" placeholder="Enter Your Name"> <br>
+    <input type="text" name="" id="cityInput" placeholder="Enter Your City"> <br>
+
+    <button id="previewBtn">Submit</button>
+    <p id="profilePreviwe"></p>
+
+    <!-- Qus 3 -->
+
+    <input type="password" name="" id="newpass" placeholder="Enter Your Password"> <br>
+    <button id="chackbtn">chack password</button>
+    <p id="passResult"></p>
+    
+  <!-- Qus 4 -->
+   <input type="text" id="feedbackInput" placeholder="enter your feedback">
+   <button id="sendBtn">Chack Feedback</button>
+   <p id="feedbackmsg"></p>
+
+   <!-- Qus 5 -->
+    <input type="text" id="userName" placeholder="Enter name">
+    <input type="email" id="useremail" placeholder="Enter Email">
+
+    <button id="signupbtn">Sign Up</button>
+    <p id="signupMsg"></p>
+
+
+</body>
+
+<script>
+    
+    
+    let loginuser =document.getElementById('loginuser')
+    let loginpass =document.getElementById('loginpass')
+    let loginBtn =document.getElementById('loginBtn')
+    let loginMsg =document.getElementById('loginMsg')
+    
+    let newpass =document.getElementById('newpass')
+    let chackbtn =document.getElementById('chackbtn')
+    let passResult =document.getElementById('passResult')
+    
+    let feedbackInput =document.getElementById('feedbackInput')
+    let sendBtn =document.getElementById('sendBtn')
+    let feedbackmsg=document.getElementById('feedbackmsg')
+    
+    
+    
+    let userName =document.getElementById('userName')
+    let userEmail =document.getElementById('useremail')
+    let signupbtn =document.getElementById('signupbtn')
+    let signupMsg =document.getElementById('signupMsg')
+
+    let fullname =document.getElementById('fullname')
+    let cityname =document.getElementById('cityInput')
+    let previewBtn=document.getElementById('previewBtn')
+    let profilePreviwe=document.getElementById('profilePreviwe')
+
+    loginBtn.addEventListener('click',()=>{
+
+        if(loginuser.value==="" ||
+            loginpass.value==="" ){
+                loginMsg.innerText="Enter all Details"
+        } else{
+            loginMsg.innerText="Login successful"
+
+        }
+
+    })
+
+    previewBtn.addEventListener('click',()=>{
+
+        profilePreviwe.innerText =fullname.value +"form"+cityname.value
+
+    })
+chackbtn.addEventListener('click',()=>{
+    if(newpass.value.length <6){
+        passResult.innerText="Weak"
+    } else{
+        passResult.innerText="Strong"
+    }
+})
+
+sendBtn.addEventListener('click',()=>{
+    if(feedbackInput.value===""){
+        feedbackmsg.innerText="Please Write Feedback"
+    } else{
+        feedbackmsg.innerText="Thanks for Feedback"
+    }
+})
+
+
+signupbtn.addEventListener('click',()=>{
+    if(userName.value==="" ||
+       userEmail.value==="" ){
+           signupMsg.innerText="All fields Required"
+
+       } else{
+        signupMsg.innerText="Welcome "+userName.value
+
+       }
+
+    })
+       
+    
+
+
+
+
+</script>
+</html>

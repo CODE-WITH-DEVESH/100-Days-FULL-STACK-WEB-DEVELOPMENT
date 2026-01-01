@@ -14,6 +14,16 @@
     <input type="text" name="" id="lengthInput">
     <p id="liveLength">0</p>
 
+    <input type="text" name="" id="greetInput">
+    <p id="greetOutput"></p>
+
+
+    <input type="text" name="" id="lowerInput">
+    <p id="lowerOutput"></p>
+
+
+    <input type="text" id="statusInput" placeholder="Enter the text">
+    <p id="statusOutput"></p>
 </body>
 <script>
     let mirrorInput =document.getElementById('mirrorInput')
@@ -21,6 +31,32 @@
 
     let lengthInput =document.getElementById('lengthInput')
     let liveLength =document.getElementById('liveLength')
+    let greetInput =document.getElementById('greetInput')
+    let greetOutput =document.getElementById('greetOutput')
+
+    let lowerInput =document.getElementById('lowerInput')
+    let lowerOutput=document.getElementById('lowerOutput')
+
+    let statusInput =document.getElementById('statusInput')
+    let statusOutput =document.getElementById('statusOutput')
+
+
+    statusInput.addEventListener('input',()=>{
+        if(statusInput.value ===""){
+            statusOutput.innerText="Waiting.."
+        } else{
+            statusOutput.innerText="Typing.."
+        }
+        
+    })
+
+    lowerInput.addEventListener('input',()=>{
+        // alert()
+        lowerOutput.innerText=lowerInput.value.toLowerCase();
+    })
+      
+    
+
 
     mirrorInput.addEventListener('input',()=>{
 
@@ -33,7 +69,22 @@
     })
 
    lengthInput.addEventListener('input',()=>{
-    liveLength.innerText=lengthInput.value.length()
+    liveLength.innerText=lengthInput.value.length
    })
+
+   greetInput.addEventListener('input',()=>{
+    if(greetInput.value===""){
+        greetOutput.innerText="Please type name"
+
+    } else{
+        greetOutput.innerText="Hello "+ greetInput.value
+    }
+   })
+
+
+
+
+
+
 </script>
 </html>

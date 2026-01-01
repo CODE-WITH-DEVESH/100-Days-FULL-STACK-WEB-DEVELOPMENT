@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Cart & Bill Preview System</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    padding: 30px;
+    color: #fff;
+}
+
+/* Heading */
+h2{
+    font-size: 28px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Product Buttons */
+.addBtn{
+    width: 280px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #ff512f, #f09819);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    transition: all 0.35s ease;
+}
+
+.addBtn:hover{
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 25px 55px rgba(0,0,0,0.6);
+}
+
+.addBtn:active{
+    transform: scale(0.95);
+}
+
+/* Divider */
+hr{
+    border: none;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+    margin: 30px 0;
+}
+
+/* Cart List */
+#cartlist{
+    list-style: none;
+    max-width: 400px;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#cartlist li{
+    margin-bottom: 10px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    font-size: 15px;
+    font-weight: 500;
+    animation: fadeUp 0.4s ease-in-out;
+}
+
+/* Total Bill */
+h3{
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+#totalbill{
+    padding: 6px 14px;
+    margin-left: 6px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+}
+
+/* Animation */
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h2>Products   </h2>
+    <button class="addBtn" data-name="T-Shirt" data-price="500"> Add T-Shirt (₹500)
+
+    </button> <br> <br>
+    <button class="addBtn" data-name="Shoes" data-price="1500"> Add Shoes (₹1500)
+
+    </button> <br> <br>
+    <button class="addBtn" data-name="Cap" data-price="300"> Add Cap (₹300)
+
+
+    </button> <br> <br>
+
+    <hr>
+
+    <ul id="cartlist"></ul>
+
+    <h3>Total Bill ₹ <span id="totalbill">0</span></h3>
+
+
+
+
+</body>
+<script>
+    let addButtons =document.querySelectorAll('.addBtn')
+    let cardlist = document.getElementById('cartlist')
+    let totalbillText =document.getElementById('totalbill')
+
+    let card =[]
+
+
+    addButtons.forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            let ProductName =btn.dataset.name;
+            let ProductPrice=Number(btn.dataset.price)
+
+            let product ={
+                name:ProductName,
+                price:ProductPrice
+            }
+            card.push(product)
+            renderCard()
+        })
+    })
+
+    function renderCard(){
+        cardlist.innerHTML=""
+
+        let total =0;
+        card.forEach(item=>{
+            let li =document.createElement('li')
+            li.innerText=`${item.price} - ₹${item.price}`
+            cardlist.appendChild(li)
+
+            total=total+item.price;
+
+        })
+        totalbillText.innerText=total
+    }
+</script>
+</html>

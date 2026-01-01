@@ -1,0 +1,445 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission System</title>
+</head>
+<body>
+
+<h2>Student Admission System</h2>
+
+<form id="admissionForm">
+
+   
+    <input type="text" id="stuname" placeholder="Enter Your Name"><br><br>
+
+    <input type="text" id="stucity" placeholder="Enter City"><br><br>
+
+   
+    <select id="courseSelect">
+        <option value="">Select Course</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Data Science">Data Science</option>
+    </select><br><br>
+
+
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <br><br>
+
+    Subjects:<br>
+    <input type="checkbox" class="subject" value="HTML"> HTML ($100)<br>
+    <input type="checkbox" class="subject" value="CSS"> CSS ($100)<br>
+    <input type="checkbox" class="subject" value="JavaScript"> JavaScript ($100)<br><br>
+
+
+    <input type="number" id="stuMarks" placeholder="Enter Marks"><br><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<hr>
+
+<h3>Live Preview</h3>
+<p id="preview"></p>
+<p id="feepreview"></p>
+
+<hr>
+<h3>Admitted Students</h3>
+<div id="studentList"></div>
+
+<script src="script.js"></script>
+</body>
+<script>
+    let stuname =document.getElementById('stuname')
+    let stucity=document.getElementById('stucity')
+    let courseSelect =document.getElementById('courseSelect')
+    let stuMarks=document.getElementById('stuMarks')
+    let preview=document.getElementById('preview')
+    let feepreview=document.getElementById('feepreview')
+    let studentList =document.getElementById('studentList')
+
+    let students =[]
+    const baseFee=5000;
+
+    stuname.addEventListener('input',updatePreview)
+    stucity.addEventListener('input',updatePreview)
+    courseSelect.addEventListener('input',updatePreview)
+    
+      function updatePreview(){
+        preview.innerText=
+        "Name :" +stuname.value+
+        "City :" +stucity.value+
+        "Course :" +courseSelect.value;
+
+      }
+      function calculateFee (){
+        let selectedFees =[]
+        
+      }
+
+students.forEach(sub => {
+    if(sub.checked){
+        if(sun.value ==="Javascript"){
+            selectedFees.push(2000)
+
+        } else{
+            selectedFees.push(1000)
+        }
+    }
+})
+
+let subjectFee =selectedFees.reduce((sum,fee) => sum +fee,0)
+return baseFee +subjectFee
+
+subjects.forEach(sub =>{
+    sub.addEventListener("change",()=>{
+        feepreview.innerText ="Total Fee " +calculateFee();
+    })
+})
+
+document.getElementById('admissionForm')
+.addEventListener("submit",function(e){
+    e.preventDefault();
+
+    if(
+        stuname.value ==="" || 
+        stucity.value ==="" || 
+        courseSelect.value ==="" || 
+        stuMarks.value ==="" 
+
+    ){
+        alert("Please fill all fields")
+        return;
+    } if(
+        stuMarks.value<40)
+        alert("Student Failed")
+        return;
+    
+        
+        let student ={
+            name:stuname.value,
+            city:stucity.value,
+            course: courseSelect.value,
+            marks: stuMarks.value,
+            fee:calculateFee()
+        }
+        students.push(student)
+        renderStudents()
+        this.reset()
+        preview.innerText=""
+        feepreview.innerText=""
+    })  
+
+    function renderStudents(){
+        studentList.innerHTML =""
+
+        students.forEach(({name,city ,course,fee }) =>{
+            let li =document.createElement("li")
+            li.innerText=` ${name} from ${city} enrolled in ${course} | fee "${fee}`
+            studentList.appendChild(li)
+        })
+    }
+</script>
+</html> -->
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission System</title>
+
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    padding: 30px;
+    color: #fff;
+}
+
+/* Headings */
+h2, h3{
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Form Card */
+form{
+    max-width: 500px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+    margin-bottom: 25px;
+}
+
+/* Inputs & Select */
+input, select{
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus{
+    transform: scale(1.04);
+    box-shadow: 0 0 0 3px rgba(0,174,255,0.6);
+}
+
+/* Radio & Checkbox alignment */
+input[type="radio"],
+input[type="checkbox"]{
+    width: auto;
+    margin-right: 6px;
+    transform: scale(1.1);
+}
+
+/* Button */
+button{
+    width: 200px;
+    padding: 14px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    background: linear-gradient(135deg, #ff512f, #f09819);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    transition: all 0.35s ease;
+}
+
+button:hover{
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 25px 55px rgba(0,0,0,0.6);
+}
+
+button:active{
+    transform: scale(0.95);
+}
+
+/* Preview Section */
+#preview,
+#feepreview{
+    max-width: 500px;
+    padding: 14px 20px;
+    margin-bottom: 10px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* Student List */
+#studentList{
+    max-width: 600px;
+    list-style: none;
+    padding: 0;
+}
+
+#studentList li{
+    margin-bottom: 10px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    font-size: 14px;
+    animation: fadeUp 0.4s ease-in-out;
+}
+
+/* Divider */
+hr{
+    border: none;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+    margin: 25px 0;
+}
+
+/* Animation */
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<h2>Student Admission System</h2>
+
+<form id="admissionForm">
+
+    <!-- Name -->
+    <input type="text" id="stuname" placeholder="Enter Your Name"><br>
+
+    <!-- City -->
+    <input type="text" id="stucity" placeholder="Enter City"><br>
+
+    <!-- Course -->
+    <select id="courseSelect">
+        <option value="">Select Course</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Data Science">Data Science</option>
+    </select><br>
+
+    <!-- Gender -->
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <br><br>
+
+    <!-- Subjects -->
+    Subjects:<br>
+    <input type="checkbox" class="subject" value="HTML"> HTML (₹1000)<br>
+    <input type="checkbox" class="subject" value="CSS"> CSS (₹1000)<br>
+    <input type="checkbox" class="subject" value="JavaScript"> JavaScript (₹1000)<br><br>
+
+    <!-- Marks -->
+    <input type="number" id="stuMarks" placeholder="Enter Marks"><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<hr>
+
+<h3>Live Preview</h3>
+<p id="preview"></p>
+<p id="feepreview"></p>
+
+<hr>
+
+<h3>Admitted Students</h3>
+<ul id="studentList"></ul>
+
+<script>
+    // Elements
+    let stuname = document.getElementById("stuname");
+    let stucity = document.getElementById("stucity");
+    let courseSelect = document.getElementById("courseSelect");
+    let stuMarks = document.getElementById("stuMarks");
+    let preview = document.getElementById("preview");
+    let feepreview = document.getElementById("feepreview");
+    let studentList = document.getElementById("studentList");
+    let subjects = document.querySelectorAll(".subject");
+
+    let students = [];
+    const baseFee = 5000;
+
+    // Live Preview
+    stuname.addEventListener("input", updatePreview);
+    stucity.addEventListener("input", updatePreview);
+    courseSelect.addEventListener("change", updatePreview);
+
+    function updatePreview() {
+        preview.innerText =
+            "Name: " + stuname.value + " | " +
+            "City: " + stucity.value + " | " +
+            "Course: " + courseSelect.value;
+    }
+
+    // Fee Calculation
+    function calculateFee() {
+        let subjectFee = 0;
+
+        subjects.forEach(sub => {
+            if (sub.checked) {
+                subjectFee += 1000;
+            }
+        });
+
+        return baseFee + subjectFee;
+    }
+
+    // Update fee on subject change
+    subjects.forEach(sub => {
+        sub.addEventListener("change", () => {
+            feepreview.innerText = "Total Fee: ₹" + calculateFee();
+        });
+    });
+
+    // Form Submit
+    document.getElementById("admissionForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        if (
+            stuname.value === "" ||
+            stucity.value === "" ||
+            courseSelect.value === "" ||
+            stuMarks.value === ""
+        ) {
+            alert("Please fill all fields");
+            return;
+        }
+
+        if (stuMarks.value < 40) {
+            alert("Student Failed");
+            return;
+        }
+
+        let student = {
+            name: stuname.value,
+            city: stucity.value,
+            course: courseSelect.value,
+            marks: stuMarks.value,
+            fee: calculateFee()
+        };
+
+        students.push(student);
+        renderStudents();
+
+        this.reset();
+        preview.innerText = "";
+        feepreview.innerText = "";
+    });
+
+    // Render Students
+    function renderStudents() {
+        studentList.innerHTML = "";
+
+        students.forEach(stu => {
+            let li = document.createElement("li");
+            li.innerText = `${stu.name} from ${stu.city} enrolled in ${stu.course} | Fee: ₹${stu.fee}`;
+            studentList.appendChild(li);
+        });
+    }
+</script>
+
+</body>
+</html>

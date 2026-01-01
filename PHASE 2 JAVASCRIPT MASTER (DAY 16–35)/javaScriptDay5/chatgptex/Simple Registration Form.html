@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Registration Form</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1f4037, #99f2c8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Inputs */
+input{
+    width: 320px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    transition: all 0.3s ease;
+}
+
+input::placeholder{
+    color: #777;
+}
+
+input:focus{
+    transform: scale(1.05);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
+}
+
+/* Submit Button */
+#submitBtn{
+    width: 200px;
+    padding: 14px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    background: linear-gradient(135deg, #ff512f, #f09819);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    transition: all 0.35s ease;
+}
+
+#submitBtn:hover{
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.55);
+}
+
+#submitBtn:active{
+    transform: scale(0.95);
+}
+
+/* Messages */
+#forMsg,
+#forData{
+    min-width: 340px;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    animation: fadeUp 0.5s ease-in-out;
+}
+
+/* Spacing between messages */
+#forData{
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* Animation */
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="nameInput" placeholder="Enter the name"> <br>
+    <input type="email" name="" id="emailInput" placeholder="Enter the Email"> <br>
+    <input type="password" name="" id="passInput" placeholder="Enter the password"> <br>
+    
+
+    <button id="submitBtn">Submit</button>
+
+    <p id="forMsg"></p>
+    <p id="forData"></p>
+</body>
+<script>
+    let nameInput=document.getElementById('nameInput')
+    let emailInput=document.getElementById('emailInput')
+    let passInput=document.getElementById('passInput')
+
+    let submitBtn =document.getElementById('submitBtn')
+    let fromMsg =document.getElementById('forMsg')
+    let previewData =document.getElementById('forData')
+
+
+    submitBtn.addEventListener('click',()=>{
+        if(nameInput.value ==="" ||
+            emailInput.value ==="" ||
+            passInput.value ==="" ){
+            fromMsg.innerText ="Please fill all fields"
+        } else{
+            fromMsg.innerText ="form Submitted Successfully"
+            previewData.innerText= "Name : "+nameInput.value  +" Email : " +emailInput.value
+            nameInput.value=" "
+            emailInput.value=" "
+            passInput.value=" "
+
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration + Live Preview System</title>
+</head>
+<body>
+    <h2>Student Registration</h2>
+
+    <!-- name Preview -->
+    <input type="text" name="" id="stuname" placeholder="Student Name">
+    <p id="namePreview"></p>
+
+    <!-- City Preview -->
+     <input type="text" name="" id="stucity" placeholder="Enter City">
+     <p id="citypreview"></p>
+
+     <!-- Email Preview -->
+      <input type="email" name="" id="stuemail" placeholder="Enter Email">
+      <p id="emailpreview"></p>
+
+      <input type="password" name="" id="stupass" placeholder="Enter Password">
+      <p id="passStatus"></p>
+
+      <button id="submitBtn">Submit </button>
+
+      <p id="formsg"></p>
+
+
+
+
+</body>
+<script>
+    let stuname =document.getElementById('stuname')
+    let namePreview=document.getElementById('namePreview')
+    let stucity=document.getElementById('stucity')
+    let citypreview=document.getElementById('citypreview')
+    let stuemail=document.getElementById('stuemail')
+    let emailpreview =document.getElementById('emailpreview')
+    let stupass=document.getElementById('stupass')
+    let passStatus=document.getElementById('passStatus')
+
+    let submitBtn=document.getElementById('submitBtn')
+    let fromMsg=document.getElementById('formsg')
+
+    stuname.addEventListener('input',()=>{
+        namePreview.innerText=stuname.value ==="" ? " ":stuname.value
+    })
+
+    stucity.addEventListener('input',()=>{
+        citypreview.innerText=stucity.value==="" ? "":stucity.value
+
+    })
+    stuemail.addEventListener('input',()=>{
+        emailpreview.innerText=stuemail.value==="" ? "":stuemail.value
+    })
+    stupass.addEventListener('input',()=>{
+        if(stupass.value.length<6){
+            passStatus.innerText="Weak Password"
+        } else{
+            passStatus.innerText="Strong Password"
+        }
+    })
+
+    submitBtn.addEventListener('click',()=>{
+        if(
+            stuname.value===""||
+            stucity.value===""||
+            stuemail.value===""||
+            stupass.value===""
+        ){
+            fromMsg.innerText="Please fill all Data"
+        } else{
+            fromMsg.innerText="Login Done"
+            stuname.value=""
+            stucity.value=""
+            stuemail.value=""
+            stupass.value=""
+        }
+    })
+
+</script>
+</html>

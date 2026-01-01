@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission & Fee Management System</title>
+</head>
+
+<body>
+
+    <h2>Student Admission Form</h2>
+
+    <form id="admissionForm">
+
+        <!-- Name -->
+        <input type="text" id="stuName" placeholder="Enter Name"><br><br>
+
+        <!-- City -->
+        <input type="text" id="stuCity" placeholder="Enter City"><br><br>
+
+        <!-- Course -->
+        <select id="courseSelect">
+            <option value="">Select Course</option>
+            <option value="Web">Web Development</option>
+            <option value="Data">Data Science</option>
+        </select><br><br>
+
+        <!-- Gender -->
+        Gender:
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <br><br>
+
+        <!-- Subjects -->
+        Subjects:<br>
+        <input type="checkbox" class="subject" value="HTML"> HTML (₹1000)<br>
+        <input type="checkbox" class="subject" value="CSS"> CSS (₹1000)<br>
+        <input type="checkbox" class="subject" value="JavaScript"> JavaScript (₹2000)<br>
+        <br>
+
+        <!-- Marks -->
+        <input type="number" id="stuMarks" placeholder="Enter Marks"><br><br>
+
+        <button type="submit" id="submitBtn">Submit</button>
+
+    </form>
+
+    <hr>
+
+    <h3>Live Preview</h3>
+    <p id="preview"></p>
+    <p id="feePreview"></p>
+
+    <hr>
+
+    <h3>Admitted Students</h3>
+    <ul id="studentList"></ul>
+
+</body>
+<script>
+    let stuName = document.getElementById("stuName");
+    let stuCity = document.getElementById("stuCity");
+    let courseSelect = document.getElementById("courseSelect");
+    let stuMarks = document.getElementById("stuMarks");
+
+    let preview = document.getElementById("preview");
+    let feePreview = document.getElementById("feePreview");
+    let studentList = document.getElementById("studentList");
+
+    let subjects = document.querySelectorAll(".subject");
+
+    let students = []; // array of objects
+    const baseFee = 5000;
+    let totalfee = baseFee;
+
+
+
+
+
+    stuName.addEventListener('input', () => {
+        preview.innerText = stuName.value
+        // preview.innerText = stuCity.value
+
+
+        subjects.forEach(sub => {
+            if (sub.checked) {
+
+                if (sub.value === "javaScript") {
+                    totalfee = totalfee + 2000
+                } else {
+                    totalfee = totalfee + 1000
+                }
+
+            }
+            feePreview.innerText = "Total Fee" + totalfee
+        })
+
+    })
+
+    let student = {
+        name: stuName.value,
+        city: stuCity.value,
+        course: courseSelect.value,
+        marks: stuMarks.value,
+        // fee: totalFee
+        
+    }
+    student.name
+    student.fee
+    console.log(student);
+    
+
+</script>
+
+</html>
