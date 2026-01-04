@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Load Student</button>
+    <p id="status"></p>
+
+</body>
+<script>
+    function fetchData(){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Students Loaded")
+            },2000)
+        })
+    }
+    function showLoader(){
+        document.getElementById('status').innerText="Loading"
+    }
+
+    function hideLoader(){
+        document.getElementById('status').innerText="Data Loaded Successfully"
+
+    }
+    function showError(){
+        document.getElementById('status').innerText="Error Loading Data"
+    }
+
+    document.getElementById('btn').addEventListener('click',()=>{
+        showLoader()
+        fetchData()
+        .then(()=> hideLoader())
+        .catch(()=>showError())
+    })
+</script>
+</html>

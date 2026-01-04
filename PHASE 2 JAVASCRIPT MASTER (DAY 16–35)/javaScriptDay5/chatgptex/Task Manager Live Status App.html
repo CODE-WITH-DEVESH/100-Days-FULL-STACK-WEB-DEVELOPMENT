@@ -1,16 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager + Live Status App</title>
     <style>
-        .done{
+        .done {
             text-decoration: line-through;
             color: red;
         }
+        /* Floating Like / Heart Background */
+body::before,
+body::after{
+    content: "❤";
+    position: fixed;
+    font-size: 24px;
+    color: rgba(255, 105, 180, 0.6);
+    animation: floatLike 12s linear infinite;
+    z-index: 0;
+}
+
+body::after{
+    content: "👍";
+    font-size: 22px;
+    color: rgba(0, 255, 200, 0.6);
+    animation-duration: 15s;
+}
+
+/* Multiple floating likes */
+@keyframes floatLike{
+    0%{
+        transform: translateY(100vh) translateX(0) scale(0.6);
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    50%{
+        transform: translateY(50vh) translateX(40px) scale(1);
+    }
+    100%{
+        transform: translateY(-10vh) translateX(-40px) scale(1.4);
+        opacity: 0;
+    }
+}Student Management Dashboard
+
+/* Extra floating emojis using pseudo elements */
+h2::before,
+h2::after{
+    content: "💖";
+    position: absolute;
+    font-size: 20px;
+    animation: heartFly 8s infinite ease-in-out;
+    opacity: 0.7;
+}
+
+h2::after{
+    content: "✨";
+    animation-delay: 3s;
+}
+
+@keyframes heartFly{
+    0%{
+        transform: translateY(0) translateX(0) scale(0.5);
+        opacity: 0;
+    }
+    30%{
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(-120px) translateX(60px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Keep app content above animation */
+body *{
+    position: relative;
+    z-index: 2;
+}
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Background Image */
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 30px;
+            color: #fff;
+        }
+
+        /* Title */
+        h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* Input */
+        #taskinput {
+            width: 320px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Buttons Common */
+        button {
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin: 6px 4px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* Add Button */
+        #addbtn {
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        #addbtn:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* Counter */
+        p {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* Divider */
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 20px 0;
+        }
+
+        /* Task List */
+        #tasklist {
+            list-style: none;
+            max-width: 420px;
+            padding: 0;
+        }
+
+        /* Task Item */
+        #tasklist li {
+            margin-bottom: 12px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            animation: slideUp 0.4s ease;
+        }
+
+        /* Task Buttons */
+        #tasklist li button {
+            padding: 8px 12px;
+            font-size: 12px;
+            border-radius: 20px;
+        }
+
+        /* Complete Button */
+        #tasklist li button:first-of-type {
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+        }
+
+        /* Delete Button */
+        #tasklist li button:last-of-type {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        }
+
+        /* Done Task */
+        .done {
+            text-decoration: line-through;
+            color: #ffb3b3;
+            opacity: 0.7;
+        }
+
+        /* Status Text */
+        #statusText {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffd700;
+        }
+
+        /* Filter Buttons */
+        #allbtn {
+            background: linear-gradient(135deg, #2193b0, #6dd5ed);
+        }
+
+        #completebutton {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+
+        #pendingBtn {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #000;
+        }
+
+        /* Clear All */
+        #clearAll {
+            margin-top: 15px;
+            background: linear-gradient(135deg, #c31432, #240b36);
+        }
+
+        /* Animation */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <h2>Task Menager</h2>
@@ -28,101 +270,102 @@
 
     <button id="clearAll">Clear All</button>
 
-    
+
 </body>
 <script>
-    let taskinput =document.getElementById('taskinput')
-    let addbtn=document.getElementById('addbtn')
-    let toatltasks =document.getElementById('total')
-    let tasklist=document.getElementById('tasklist')
-    let statusText=document.getElementById('statusText')
+    let taskinput = document.getElementById('taskinput')
+    let addbtn = document.getElementById('addbtn')
+    let toatltasks = document.getElementById('total')
+    let tasklist = document.getElementById('tasklist')
+    let statusText = document.getElementById('statusText')
 
-    let allbtn=document.getElementById('allbtn')
-    let completebutton=document.getElementById('completebutton')
-    let paddingbtn =document.getElementById('pendingBtn')
-
-
-
-    let clearAll=document.getElementById('clearAll')
+    let allbtn = document.getElementById('allbtn')
+    let completebutton = document.getElementById('completebutton')
+    let paddingbtn = document.getElementById('pendingBtn')
 
 
-    let totalTasks =0;
 
-    addbtn.addEventListener('click',()=>{
-        if(taskinput.value ===""){
+    let clearAll = document.getElementById('clearAll')
+
+
+    let totalTasks = 0;
+
+    addbtn.addEventListener('click', () => {
+        if (taskinput.value === "") {
             alert("Please Enter the task")
             return;
 
         }
 
-        let li =document.createElement('li')
-        li.innerText=taskinput.value
+        let li = document.createElement('li')
+        li.innerText = taskinput.value
 
-        let completeBtn =document.createElement('button')
-        completeBtn.innerText="Complete Task"
+        let completeBtn = document.createElement('button')
+        completeBtn.innerText = "Complete Task"
 
-        let deleteBtn =document.createElement('button')
-        deleteBtn.innerText="Delete"
+        let deleteBtn = document.createElement('button')
+        deleteBtn.innerText = "Delete"
         li.appendChild(completeBtn)
         li.appendChild(deleteBtn)
 
         tasklist.appendChild(li)
 
         toatltasks++;
-        toatltasks.innerText=toatltasks
+        toatltasks.innerText = toatltasks
 
-        taskinput.value =""
+        taskinput.value = ""
 
-        completeBtn.addEventListener('click',()=>{
+        completeBtn.addEventListener('click', () => {
             li.classList.toggle("done")
-            if(li.classList.contains("done")){
-                statusText.innerText="Status : Completed"
-            } else{
-                statusText.innerText="Status : Pending"
+            if (li.classList.contains("done")) {
+                statusText.innerText = "Status : Completed"
+            } else {
+                statusText.innerText = "Status : Pending"
             }
         })
 
-        deleteBtn.addEventListener('click',()=>{
+        deleteBtn.addEventListener('click', () => {
             li.remove()
             toatltasks--;
-            toatltasks.innerText=toatltasks;
+            toatltasks.innerText = toatltasks;
         })
 
     })
 
-    allbtn.addEventListener('click',()=>{
-        let tasks =document.createElement('li')
+    allbtn.addEventListener('click', () => {
+        let tasks = document.createElement('li')
 
-        tasks.forEach(task=>{
-            task.style.display ="list-item"
+        tasks.forEach(task => {
+            task.style.display = "list-item"
         })
     })
-    completebutton.addEventListener('click',()=>{
-        let tasks=document.querySelectorAll('li')
-        tasks.forEach(task=>{
-            if(task.classList.contains('done')){
-                task.style.display="list-item"
-            } else{
-                task.style.display="none"
+    completebutton.addEventListener('click', () => {
+        let tasks = document.querySelectorAll('li')
+        tasks.forEach(task => {
+            if (task.classList.contains('done')) {
+                task.style.display = "list-item"
+            } else {
+                task.style.display = "none"
             }
         })
     })
-    paddingbtn.addEventListener('click',()=>{
-        let tasks=document.querySelectorAll('li')
+    paddingbtn.addEventListener('click', () => {
+        let tasks = document.querySelectorAll('li')
 
-        tasks.forEach(task=>{
-            if(!task.classList.contains('done')){
-                task.style.display='list-item'
-            } else{
-                task.style.display='none'
+        tasks.forEach(task => {
+            if (!task.classList.contains('done')) {
+                task.style.display = 'list-item'
+            } else {
+                task.style.display = 'none'
             }
         })
     })
-    clearAll.addEventListener('click',()=>{
-        tasklist.innerHTML=""
-        toatltasks=0
-        totalTasks.innerText=toatltasks
-        statusText.innerText="Status :pending"
+    clearAll.addEventListener('click', () => {
+        tasklist.innerHTML = ""
+        toatltasks = 0
+        totalTasks.innerText = toatltasks
+        statusText.innerText = "Status :pending"
     })
 </script>
+
 </html>
