@@ -7,7 +7,7 @@
 //     })
 // }
 
-const { jsx } = require("react/jsx-runtime");
+// const { jsx } = require("react/jsx-runtime");
 
 // async function loadData() {
 //     let result =await fetchData()
@@ -194,5 +194,45 @@ const { jsx } = require("react/jsx-runtime");
 
 
 
-localStorage.setItem('age',21)
-console.log(localStorage.getItem('age'));
+// localStorage.setItem('age',21)
+// console.log(localStorage.getItem('age'));
+
+
+
+// try {
+//     console.log(User.name)
+// } catch (err) {
+//     console.log("Somethig went wrong")
+// }
+// // function login(password){
+// //     if(password.length<6){
+// //         throw new Error("Password too short")
+// //     }
+// //     return "Login Succes"
+// // }
+
+
+// try{
+//     let res =login('123')
+//     console.log(res);
+
+    
+// } catch(err){
+//     console.log(err.message);
+    
+
+// }
+
+
+async function loadData() {
+    try{
+        let res =await fetchData()
+        console.log(res);
+
+        
+    }catch(err){
+        console.log("Failed To load Data")
+    }
+
+    
+}
