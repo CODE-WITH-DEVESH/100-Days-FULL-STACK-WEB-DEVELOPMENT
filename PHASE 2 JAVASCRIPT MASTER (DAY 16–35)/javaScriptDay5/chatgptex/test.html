@@ -1,40 +1,77 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <button id="btn">Load Student</button>
-    <p id="status"></p>
 
+<body>
+    <button id="btn">Load</button>
+    <p id="status"></p>
 </body>
 <script>
-    function fetchData(){
-        return new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-                resolve("Students Loaded")
-            },2000)
-        })
-    }
-    function showLoader(){
-        document.getElementById('status').innerText="Loading"
+    // function fetchData(){
+    //     return new Promise((resolve, reject)=>{
+    //         setTimeout(() => {
+    //             let succes = true
+    //             if(succes){
+    //                 resolve("Data Loaded")
+    //             } else{
+    //                 reject("Error")
+    //             }
+    //         }, 2000);
+    //     })
+    // }
+
+    // async function loadData() {
+    //     document.getElementById('status').innerText="Loading"
+
+    //     try {
+    //         let data = await fetchData()
+    //             document.getElementById('status').innerText= data
+
+    //     } catch (error) {
+    //         document.getElementById('status').innerText="Failed to Load"
+
+    //     }
+
+
+    // }
+    // document.getElementById('btn').addEventListener('click',loadData)
+
+
+    function fetchData() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let success = true;
+
+                if (success) {
+                    resolve("Data Loaded");
+                } else {
+                    reject("Error");
+                }
+            }, 2000);
+        });
     }
 
-    function hideLoader(){
-        document.getElementById('status').innerText="Data Loaded Successfully"
+    async function loadData() {
+        document.getElementById('status').innerText = "Loading...";
 
-    }
-    function showError(){
-        document.getElementById('status').innerText="Error Loading Data"
+        try {
+            let data = await fetchData();   // ✅ Promise resolve ka result
+            document.getElementById('status').innerText = data; // ✅ show data
+        } catch (error) {
+            document.getElementById('status').innerText = "Failed to Load";
+        }
     }
 
-    document.getElementById('btn').addEventListener('click',()=>{
-        showLoader()
-        fetchData()
-        .then(()=> hideLoader())
-        .catch(()=>showError())
-    })
+    document.getElementById('btn').addEventListener('click', loadData);
+
 </script>
+
 </html>
