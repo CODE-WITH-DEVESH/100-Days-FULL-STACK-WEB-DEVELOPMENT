@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🟢 FORM + POST API (Add Data)</title>
+</head>
+
+<body>
+
+    <h2>Add User (POST API)</h2>
+    <form id="userform">
+        <input type="text" id="nameInput" placeholder="Enter Name">
+        <input type="email" id="emailInput" placeholder="Enter Email">
+        <input type="text" id="cityinput" placeholder="Enter City">
+        <button> Add User</button>
+
+    </form>
+    <p id="formStatus"></p>
+
+
+</body>
+<script>
+    let form = document.getElementById('userform')
+    let nameInput = document.getElementById('nameInput')
+    let emailInput = document.getElementById('emailInput')
+    let cityinput = document.getElementById('cityinput')
+    let formStatus = document.getElementById('formStatus')
+
+
+
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        if (
+            nameInput.value === "" ||
+            emailInput.value === "" ||
+            cityinput.value === ""
+        ) {
+
+            formStatus.innerText = "Please Fill all fields"
+            formStatus.style.color = "red"
+        }
+    });
+        return
+
+       
+        async function addUser() {
+    try {
+        let res = await fetch("https://jsonplaceholder.typicode.com/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: nameInput.value,
+                email: emailInput.value,
+                city: cityInput.value
+            })
+        });
+
+        let data = await res.json();
+        console.log("Added User:", data);
+
+    } catch (err) {
+        console.log("Error:", err);
+    }
+}
+
+        
+</script>
+
+</html>
+
+<!-- | Method | Kaam        |
+| ------ | ----------- |
+| GET    | data lana   |
+| POST   | data bhejna |
+| PUT    | data update |
+| DELETE | data delete | -->
