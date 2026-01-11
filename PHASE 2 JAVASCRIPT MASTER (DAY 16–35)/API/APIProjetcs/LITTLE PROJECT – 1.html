@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LITTLE PROJECT  1</title>
+</head>
+
+<body>
+    <h3> User List</h3>
+    <button id="loadBtn">Load Users</button>
+    <p id="status"></p>
+    <div id="users"></div>
+</body>
+<script>
+    let loadBtn = document.getElementById('loadBtn')
+    let status = document.getElementById('status')
+    let userDiv = document.getElementById('users')
+
+    loadBtn.addEventListener('click', loadUser)
+
+    async function loadUser() {
+        status.innerText = "Loading"
+        status.style.color = "blue"
+        userDiv.innerHTML = ""
+
+        try {
+            let res = await fetch('https://jsonplaceholder.typicode.com/users')
+            let data = await res.json()
+
+            // status.innerText = "User Loaded"
+            // status.style.color = "blue"
+
+            let limitedUsers = data.slice(0, 3)
+
+            status.innerText = `${limitedUsers.length} Users Loaded`
+            status.style.color = "green"
+
+            limitedUsers.forEach(user => {
+
+
+                let p = document.createElement('p')
+                // p.innerText = `${user.name} and ${user.email} `
+                p.innerHTML = `
+                    <b>${user.name}</b><br>
+                    <small>${user.email}</small><br>
+                    <button>Delete</button>
+                                    `
+
+                p.style.color = "green"
+                userDiv.appendChild(p)
+
+
+            })
+
+        } catch (err) {
+            status.innerText = 'Error Loading User'
+            status.style.color="red"
+
+        }
+
+
+    }
+
+//     loadBtn.addEventListener('click', loadUser)
+
+// async function loadUser() {
+//     status.innerText = "Loading..."
+//     status.style.color = "blue"
+//     userDiv.innerHTML = ""
+
+//     try {
+//         let res = await fetch('https://jsonplaceholder.typicode.com/users')
+//         let data = await res.json()
+
+//         let limitedUsers = data.slice(0, 3)
+
+//         status.innerText = `${limitedUsers.length} Users Loaded`
+//         status.style.color = "green"
+
+//         limitedUsers.forEach(user => {
+//             let p = document.createElement('p')
+//             p.innerText = `${user.name} - ${user.email}`
+//             userDiv.appendChild(p)
+//         })
+
+//     } catch (err) {
+//         status.innerText = "Error Loading Users"
+//         status.style.color = "red"
+//     }
+// }
+
+</script>
+
+</html>

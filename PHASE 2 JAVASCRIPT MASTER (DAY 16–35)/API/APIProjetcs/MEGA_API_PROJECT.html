@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>FINAL MEGA API PROJECT </title>
+</head>
+
+<body>
+    <h2>Admin Deshboard - User Management </h2>
+    <input type="text" id="searchInput" placeholder="Search by Name">
+
+    <select id="cityfilter">
+        <option value="">All Cities</option>
+
+    </select>
+    <button id="loadBtn">Load Users</button>
+
+    <p id="statusText"></p>
+    <div id="userList"></div>
+
+    <hr>
+    <h3>add New User</h3>
+    <form id="userform">
+
+        <input type="text" id="nameinput" placeholder="Name">
+        <input type="email" id="emailinput" placeholder="Gmail">
+        <input type="text" id="cityinput" placeholder="city">
+        <button>Add User</button>
+
+    </form>
+
+
+</body>
+
+<script>
+    let loadBtn = document.getElementById('loadBtn')
+    let userList = document.getElementById('userList')
+    let statusText = document.getElementById('statusText')
+    let searchInput = document.getElementById('searchInput')
+    let cityfilter = document.getElementById('cityfilter')
+
+    let form = document.getElementById('userform')
+    let nameinput = document.getElementById('nameinput')
+    let emailinput = document.getElementById('emailinput')
+    let cityinput = document.getElementById('cityinput')
+
+    let userData = []
+
+    async function loadUser() {
+        try {
+            statusText.innerText = "Loading Users..."
+            statusText.style.color = "blue"
+            userList.innerHTML = ""
+
+
+            let res = await fetch('https://jsonplaceholder.typicode.com/users')
+            let data = await res.json()
+
+            userData = data
+            renderUsers(userData)
+            populateCityFilter(userData)
+            statusText.innerText = "Users Loaded"
+            statusText.style.color = "green"
+
+        } catch {
+            statusText.innerText = "Failed to load Users"
+            statusText.style.color = 'red'
+        }
+
+    }
+    function renderUsers(list) {
+        userList.innerHTML = ""
+        list.forEach(user => {
+            let div = document.createElement('div')
+            div.innerHTML = `
+            <p>
+             <b>${user.name}</b> – ${user.email} – ${user.address.city}
+            </p>
+            <button onclick="deleteUser(${user.id})">Delete</button>
+               
+            `
+            userList.appendChild(dic)
+
+        })
+    }
+    async function deleteUser(id) {
+        try {
+            statusText.innerText = "Deleting"
+            statusText.style.color = "orange"
+
+            await fetch(
+                `
+                https://jsonplaceholder.typicode.com/users/${id} 
+
+                `,
+                { method: "DELETE" }
+
+            );
+            userData = userData.filter(user => user.id !== id)
+            renderUsers(userData)
+
+            statusText.innerText = 'User Deleted'
+            statusText.style.color = "green"
+
+        } catch {
+            statusText.innerText = "Delete Failed"
+            statusText.style.color = 'red'
+        }
+
+    }
+    searchInput.addEventListener("input", () => {
+        let value = searchInput.value.toLowerCase();
+
+        let filtered = usersData.filter(user =>
+            user.name.toLowerCase().includes(value)
+        );
+
+        renderUsers(filtered);
+    });
+
+    function populateCityFilter(data) {
+        let cities = [...new Set(data.map(user => user.address.city))];
+
+        cities.forEach(city => {
+            let option = document.createElement("option");
+            option.value = city;
+            option.innerText = city;
+            cityFilter.appendChild(option);
+        });
+    }
+
+    cityFilter.addEventListener("change", () => {
+        let city = cityFilter.value;
+
+        if (city === "") {
+            renderUsers(usersData);
+        } else {
+            let filtered = usersData.filter(
+                user => user.address.city === city
+            );
+            renderUsers(filtered);
+        }
+    });
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (
+            nameInput.value === "" ||
+            emailInput.value === "" ||
+            cityInput.value === ""
+        ) {
+            alert("Fill all fields");
+            return;
+        }
+
+        try {
+            let res = await fetch(
+                "https://jsonplaceholder.typicode.com/users",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: nameInput.value,
+                        email: emailInput.value,
+                        address: { city: cityInput.value }
+                    })
+                }
+            );
+
+            let newUser = await res.json();
+
+            usersData.unshift(newUser);
+            renderUsers(usersData);
+
+            form.reset();
+        } catch {
+            alert("Failed to add user");
+        }
+    });
+    loadBtn.addEventListener("click", loadUsers);
+
+</script>
+
+</html>
