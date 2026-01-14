@@ -1,40 +1,62 @@
 import { useState } from "react";
 
 function App() {
-  const [email,setEmail]=useState("")
-  const [username, setUsername] = useState("");
-  const [password, setPassword] =useState("")
-  const [message, setMessage] = useState("");
+  const [students, setStudents] = useState([]);
+  const [name, setName] = useState("");
+  const [editIndex, setEditIndex] =useState(null)
 
-  function handleLogin() {
-    if (username === "" || password==="" || email=="") {
 
-      setMessage("Please enter name");
-    } else if(password.length<6) {
-      setMessage("Password too short")
-      
+  function addStudent() {
+    if (name === "") return;
+    if(editIndex ==null){
+      setStudents([...students,name])
+
     } else{
-      setMessage("Login successful")
+      const updatedStudents =[...students]
+      updatedStudents[editIndex]=name
+      setStudents(updatedStudents)
+      setEditIndex(null)
     }
+    setName()
+  }
+
+  function editStudents(){
+    setName(students[index])
+    setEditIndex(index)
+  }
+
+  function deleteStudent(indexToDelete) {
+    const updatedList = students.filter((_, index) => index !== indexToDelete);
+    setStudents(updatedList);
+
   }
 
   return (
     <div>
+      <h2>Student List</h2>
+
       <input
         type="text"
         placeholder="Enter name"
-        onChange={(e) => setUsername(e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
-      <br />
-      <input type="email" placeholder="Enter Email" onChange={(e)=>
-        setPassword(e.target.value)
-      } />
 
-      <button onClick={handleLogin}>
-        Submit
+       <button onClick={addStudent}>
+        {editIndex === null ? "Add" : "Update"}
       </button>
 
-      <p>{message}</p>
+
+      
+      <ul>
+        {students.map((stu, index) => (
+          <li key={index}>
+            {stu}
+            <button onClick={() => editStudent(index)}>Edit</button>
+            <button onClick={() => deleteStudent(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
