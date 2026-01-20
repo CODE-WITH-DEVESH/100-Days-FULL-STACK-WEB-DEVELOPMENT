@@ -2,7 +2,14 @@ import Todo from "./Todo"
 
 function App() {
   
-  function handelcard(){
+  function callFun(){
+    alert("Function Called")
+
+
+
+  }
+  const fruit=()=>{
+    alert("Hello")
 
   }
 
@@ -12,6 +19,8 @@ function App() {
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis deleniti rerum nostrum, omnis tempore est fugit quam, adipisci ducimus aut libero, consequatur doloremque!</p>
       <Todo/>
 
+      <button onClick={callFun}>Click Me Babe</button>
+      <button onClick={fruit}>Click Me </button>
     </>
   )
 }
