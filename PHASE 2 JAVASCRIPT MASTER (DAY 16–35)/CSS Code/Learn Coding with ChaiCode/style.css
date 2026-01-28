@@ -1,0 +1,50 @@
+/* <section class="hero">
+        <div class="hero-content">
+            <h1>Learn Coding with ChaiCode</h1>
+            <p>Build real-world skills with hands-on projects and expert guidance.</p>
+            <div class="hero-buttons">
+                <button class="primary">Get Started</button>
+                <button class="secondary">View Courses</button>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="Programming-rafiki.svg" alt="Coding Illustration">
+        </div>
+    </section> */
+    .hero{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 60px 40px;
+    }
+    .hero-content{
+  max-width: 500px;
+}
+
+.hero-content h1{
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero-content p{
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.hero-buttons button{
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary{
+  background-color: #111;
+  color: #fff;
+}
+
+.secondary{
+  background-color: #eee;
+}

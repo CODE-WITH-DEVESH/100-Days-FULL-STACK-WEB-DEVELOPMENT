@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pro Code Practice</title>
+  <style>
+    body { background:#0f172a; color:white; font-family:Arial; }
+    #container { width:90%; margin:auto; }
+    #editor { height:300px; border:1px solid #333; }
+    button { padding:10px; background:#22c55e; border:none; }
+    .hint { color: yellow; }
+    
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <h1>Pro Code Practice</h1>
+  <p id="question"></p>
+  <div id="editor"></div>
+  <br>
+  <button onclick="check()">Run</button>
+  <button onclick="showHint()">Hint</button>
+  <p id="result"></p>
+  <p class="hint" id="hint"></p>
+</div>
+
+<script src="https://unpkg.com/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<!-- https://opentdb.com/api.php?amount=1 -->
+<script>
+let questions = [];
+let current;
+
+require.config({ paths: { vs: 'https://unpkg.com/monaco-editor@0.45.0/min/vs' }});
+require(['vs/editor/editor.main'], function () {
+  window.editor = monaco.editor.create(document.getElementById('editor'), {
+    value: '',
+    language: 'javascript',
+    theme: 'vs-dark'
+  });
+});
+
+fetch("https://raw.githubusercontent.com/json-iterator/test-data/master/large-file.json")
+.then(res => res.json())
+.then(data => {
+  // demo ke liye fake questions
+  questions = [
+    {
+      question: "Console me Hello print karo",
+      answer: "console.log('Hello');",
+      hint: "console.log use hota hai"
+    },
+    {
+      question: "HTML button banao",
+      answer: "<button>Click</button>",
+      hint: "button tag use hota hai"
+    }
+  ];
+  loadQuestion();
+});
+
+function loadQuestion() {
+  current = questions[Math.floor(Math.random()*questions.length)];
+  document.getElementById("question").innerText = current.question;
+  editor.setValue("");
+  document.getElementById("result").innerText = "";
+  document.getElementById("hint").innerText = "";
+}
+
+function check() {
+  const user = editor.getValue().trim();
+  if(user === current.answer) {
+    document.getElementById("result").innerText = "✅ Correct!";
+    setTimeout(loadQuestion,1500);
+  } else {
+    document.getElementById("result").innerText = "❌ Wrong, try again!";
+  }
+}
+
+function showHint() {
+  document.getElementById("hint").innerText = "Hint: " + current.hint;
+}
+</script>
+</body>
+</html>
