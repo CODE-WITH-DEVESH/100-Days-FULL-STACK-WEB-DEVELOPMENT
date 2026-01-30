@@ -1,0 +1,138 @@
+/* RESET */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar{
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #111;
+  z-index: 1000;
+}
+
+.logo{
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links a{
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* HERO SECTION */
+.hero{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  background-color: #f4f6f8;
+}
+
+.hero-content{
+  max-width: 500px;
+}
+
+.hero-content h1{
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero-content p{
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.hero-buttons button{
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary{
+  background-color: #111;
+  color: white;
+}
+
+.secondary{
+  background-color: #ddd;
+}
+
+/* COURSES SECTION */
+.courses{
+  padding: 60px 30px;
+  text-align: center;
+}
+
+.courses h2{
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.subtitle{
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* CARDS (FLEXBOX) */
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.card{
+  background-color: #fff;
+  width: 280px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.card button{
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  background-color: #111;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px){
+  .hero{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image{
+    margin-top: 30px;
+  }
+
+  .cards{
+    flex-direction: column;
+    align-items: center;
+  }
+}

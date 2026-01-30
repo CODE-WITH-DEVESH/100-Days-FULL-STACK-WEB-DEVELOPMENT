@@ -1,0 +1,89 @@
+/* .box{
+    margin-left: 12px;
+    margin-top: 23px;
+    background: linear-gradient(135deg, #667eea,#764ba2);
+
+    width: 344px;
+    height: 400px;
+    color: white;
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+
+} */
+
+/* .card{
+    box-shadow: 0 10px 30px  rgba(162, 42, 42, 0.15);
+    background-color: #667eea;
+    width: 129px;
+    height: 400px;
+} */
+
+/* .hero{
+    background: linear-gradient(#fff,#667eea);
+}
+.hero-content h1{
+    text-shadow: 0 0 15px  rgba(255,255,255,0.6);
+}
+
+.primary{
+    text-shadow: 0 0 15px  rgba(255,255,255,0.6);
+  
+}
+.primary{
+  background-color: #111;
+  color: white;
+  box-shadow: 0 0 12px #00ffd5;
+  transition: 0.3s;
+  width: 25px;
+  height: 100px;
+}
+.primary:hover{
+  box-shadow: 0 0 25px #00ffd5;
+}
+
+.card{
+  background-color: #111;
+  color: white;
+  box-shadow: 0 0 12px #00ffd5;
+  transition: 0.3s;
+}
+
+.card:hover{
+  box-shadow: 0 0 25px #00ffd5;
+} */
+
+
+.card:hover{
+    transform: translateY(-10px) scale(1.02);
+}
+.box{
+    width: 200px;
+    height: 200px;
+    background: #222;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.box:hover{
+    transform: rotate(0.5turn) scale(1.1);
+    color: #00ffd5;
+
+}
+
+.profile-card{
+    margin-top: 30px;
+    width: 220px;
+    padding: 20px;
+    background: #111;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.profile-card:hover{
+    
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px #00ffd5;
+}
